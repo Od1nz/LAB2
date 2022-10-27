@@ -1,0 +1,31 @@
+if(code[i].find("if") != -1 && code[i].find("else if") == -1)
+        {
+            //cout<<"if push\n";
+            st_if.push("if");
+        }
+        else if(code[i].find("else") != -1 && code[i].find("else if") == -1)
+        {
+            //cout<<"find else\n";
+            if(st_if.top() == "if")     //为if-else结构
+            {
+                //cout<<"if else ++ \n";
+                if_else_num++;
+                st_if.pop();
+            }
+            else if(st_if.top() == "else if")   //为if-else if-else结构
+            {
+                if_elseif_else_num++;
+                while(st_if.top() == "else if")
+                {
+                    st_if.pop();
+                }
+                st_if.pop();
+            }
+        }
+        else if(code[i].find("else if") != -1)
+        {
+            //cout<<"else if push\n";
+            st_if.push("else if");
+        }
+        //cout<<"if_else_num = "<<if_else_num<<endl<<"if_elseif_else_num = "<<if_elseif_else_num<<endl;
+    }

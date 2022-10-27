@@ -1,0 +1,19 @@
+stack<int> st_switch;   //用堆栈来统计 if-else if-else
+    stack<string> st_if;   //用堆栈来统计 if-else if-else
+    for(int i=0; i<row; i++)
+    {
+        total_num += haveKeyWords(code[i]);
+        if(code[i].find("switch") != -1)
+        {
+            st_switch.push(0);
+            switch_num++;
+        }
+        else if(code[i].find("case") != -1)
+        {
+            st_switch.top()++;
+        }
+        else if(code[i].find("default") != -1)
+        {
+            case_num[p++] = st_switch.top();
+            st_switch.pop();
+        }
